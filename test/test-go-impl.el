@@ -22,6 +22,12 @@
 (require 'ert)
 (require 'go-impl)
 
+(ert-deftest completing-function ()
+  "go-impl--completing-function"
+  (let ((got (go-impl--completing-function (go-packages) "i" nil t)))
+    (should (member "io" got))
+    (should (member "ioutil" got))))
+
 (ert-deftest matched-packages ()
   "go-impl--matched-packages"
   (let ((got (go-impl--matched-packages (go-packages) "json")))
@@ -33,5 +39,10 @@
   (let ((got (go-impl--collect-interface "encoding/json")))
     (should (member "json.Unmarshaler" got))
     (should (member "json.Marshaler" got))))
+
+(ert-deftest real-package-name ()
+  "go-impl--real-package-name"
+  (should (string= (go-impl--real-package-name "cmd/internal/goobj") "goobj"))
+  (should (string= (go-impl--real-package-name "go-colortext") "colortext")))
 
 ;;; test-go-impl.el ends here
