@@ -1,9 +1,9 @@
 ;;; go-impl.el --- impl method stub generator for Emacs
 
-;; Copyright (C) 2014 by Syohei YOSHIDA
+;; Copyright (C) 2016 by Syohei YOSHIDA
 
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
-;; URL: https://github.com/syohex/
+;; URL: https://github.com/syohex/emacs-go-impl
 ;; Version: 0.01
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,8 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
+
+;; Insert method stubs of interface.
 
 ;;; Code:
 
