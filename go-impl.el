@@ -33,15 +33,18 @@
 (defvar go-impl--receiver-history nil)
 (defvar go-impl--interface-history nil)
 
+(defun go-impl--real-package-name (package)
+  (if (string-match "\\([^/-]+\\)\\'" package)
+      (match-string-no-properties 1 package)
+    package))
+
 (defun go-impl--collect-interface (package)
   (with-temp-buffer
     (unless (zerop (process-file "godoc" nil t nil "-src" package))
       (error "Failed: 'godoc -src %s'" package))
     (goto-char (point-min))
     (cl-loop with re = "^type\\s-+\\(\\S-+\\)\\s-+interface"
-             with real-package = (if (string-match "[/-]\\(.+\\)\\'" package)
-                                     (match-string-no-properties 1 package)
-                                   package)
+             with real-package = (go-impl--real-package-name package)
              while (re-search-forward re nil t)
              collect (concat real-package "." (match-string-no-properties 1)) into interfaces
              finally return (progn
@@ -56,20 +59,24 @@
            append (go-impl--collect-interface package)))
 
 (defun go-impl--matched-packages (packages pattern)
-  (let ((package (if (string-match "\\." pattern)
-                     (substring pattern 0 (match-beginning 0))
-                   pattern)))
-   (cl-loop with regexp = (concat package "\\'")
-            for p in packages
-            when (string-match-p regexp p)
-            collect p)))
+  (cl-loop with regexp = (concat pattern "\\'")
+           for p in packages
+           when (string-match-p regexp p)
+           collect p))
 
-(defun go-impl--completing-function (packages string predicate code)
-  (let* ((matched (go-impl--matched-packages packages string))
-         (candidates (go-impl--collect-interfaces matched)))
+(defun go-impl--completing-function (packages input predicate code)
+  (let (candidates)
+    (if (not (string-match "\\." input))
+        (setq candidates (cl-loop with re = (concat "\\`" input)
+                                  for package in (mapcar #'go-impl--real-package-name packages)
+                                  when (string-match-p re package)
+                                  collect package))
+      (let* ((interface-part (substring input 0 (match-beginning 0)))
+             (matched (go-impl--matched-packages packages interface-part)))
+        (setq candidates (go-impl--collect-interfaces matched))))
     (if (not code)
-        (try-completion string candidates predicate)
-      (all-completions string candidates predicate))))
+        (try-completion input candidates predicate)
+      (all-completions input candidates predicate))))
 
 (defun go-impl--execute (receiver interface)
   (with-temp-buffer
