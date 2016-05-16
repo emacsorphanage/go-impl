@@ -94,7 +94,8 @@
       (read-string "Receiver: " nil 'go-impl--receiver-history)
       (completing-read "Interface: " comp-fn nil nil nil 'go-impl--interface-history))))
   (let ((stubs (go-impl--execute receiver interface)))
-    (insert stubs)))
+    (save-excursion
+      (insert stubs))))
 
 (provide 'go-impl)
 
