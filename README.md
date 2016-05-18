@@ -1,4 +1,4 @@
-# go-impl.el
+# go-impl.el [![travis badge][travis-badge]][travis-link]
 
 [impl](https://github.com/josharian/impl) for Emacs
 
@@ -20,3 +20,6 @@
 #### `M-x go-impl` `(go-impl receiver interface)`
 
 Insert snippet by `impl receiver interface`.
+
+[travis-badge]: https://travis-ci.org/syohex/emacs-go-impl.svg
+[travis-link]: https://travis-ci.org/syohex/emacs-go-impl
