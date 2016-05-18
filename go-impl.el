@@ -67,10 +67,12 @@
 (defun go-impl--completing-function (packages input predicate code)
   (let (candidates)
     (if (not (string-match "\\." input))
-        (setq candidates (cl-loop with re = (concat "\\`" input)
-                                  for package in (mapcar #'go-impl--real-package-name packages)
-                                  when (string-match-p re package)
-                                  collect package))
+        (setq candidates
+              (delete-dups
+               (cl-loop with re = (concat "\\`" input)
+                        for package in (mapcar #'go-impl--real-package-name packages)
+                        when (string-match-p re package)
+                        collect package)))
       (let* ((interface-part (substring input 0 (match-beginning 0)))
              (matched (go-impl--matched-packages packages interface-part)))
         (setq candidates (go-impl--collect-interfaces matched))))
