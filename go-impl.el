@@ -1,4 +1,4 @@
-;;; go-impl.el --- impl method stub generator for Emacs -*- lexical-binding: t; -*-
+;;; go-impl.el --- impl integration for go-mode -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016 by Syohei YOSHIDA
 
@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; Insert method stubs of interface.
+;; Insert method stubs for implementing an interface by impl.
 
 ;;; Code:
 
