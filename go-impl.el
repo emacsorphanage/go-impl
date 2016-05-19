@@ -29,6 +29,19 @@
 (require 'go-mode)
 (require 'cl-lib)
 
+(defgroup go-impl nil
+  "`impl' integration for go-mode."
+  :group 'go)
+
+(defcustom go-impl-aliases-alist nil
+  "List of aliases for interface names"
+  :type '(alist :key-type (string :tag "Alias")
+                :value-type (string :tag "Real interface name")))
+
+(defcustom go-impl-enter-function nil
+  "Move point into the first inserted function."
+  :type 'boolean)
+
 (defvar go-impl--interface-cache (make-hash-table :test #'equal))
 (defvar go-impl--receiver-history nil)
 (defvar go-impl--interface-history nil)
@@ -95,9 +108,15 @@
      (list
       (read-string "Receiver: " nil 'go-impl--receiver-history)
       (completing-read "Interface: " comp-fn nil nil nil 'go-impl--interface-history))))
+  (when go-impl-aliases-alist
+    (setq interface (or (assoc-default interface go-impl-aliases-alist)
+                        interface)))
   (let ((stubs (go-impl--execute receiver interface)))
     (save-excursion
-      (insert stubs))))
+      (insert stubs))
+    (when go-impl-enter-function
+      (forward-line)
+      (back-to-indentation))))
 
 (provide 'go-impl)
 
