@@ -33,6 +33,25 @@ You can install `go-impl` with the following command.
 
 Insert snippet by `impl receiver interface`.
 
+
+## Customization
+
+#### `go-impl-aliases-alist`
+
+Association list of aliases of interface names. If interface name is matched
+with alias, then `go-impl` replaces alias with real interface name. Example is as below.
+
+```lisp
+(custom-set-variables
+ '(go-impl-aliases-alist '(("hh" . "http.Handler")
+                           ("irw" . "io.ReadWriter"))))
+```
+
+
+#### `go-impl-enter-function`
+
+If this value is non-nil, go-impl enters into first function after inserting stubs.
+
 [travis-badge]: https://travis-ci.org/syohex/emacs-go-impl.svg
 [travis-link]: https://travis-ci.org/syohex/emacs-go-impl
 [melpa-link]: https://melpa.org/#/go-impl
