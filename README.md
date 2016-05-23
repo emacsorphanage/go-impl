@@ -13,7 +13,7 @@
 - [godoc](https://godoc.org/golang.org/x/tools/cmd/godoc)
 
 ```
-% go get github.com/josharian/impl
+% go get -u github.com/josharian/impl
 % go get -u golang.org/x/tools/cmd/godoc
 ```
 
