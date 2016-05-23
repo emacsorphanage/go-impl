@@ -1,4 +1,4 @@
-# go-impl.el [![travis badge][travis-badge]][travis-link]
+# go-impl.el [![travis badge][travis-badge]][travis-link] [![melpa badge][melpa-badge]][melpa-link] [![melpa stable badge][melpa-stable-badge]][melpa-stable-link]
 
 [impl](https://github.com/josharian/impl) for Emacs
 
@@ -25,3 +25,7 @@ Insert snippet by `impl receiver interface`.
 
 [travis-badge]: https://travis-ci.org/syohex/emacs-go-impl.svg
 [travis-link]: https://travis-ci.org/syohex/emacs-go-impl
+[melpa-link]: https://melpa.org/#/go-impl
+[melpa-stable-link]: https://stable.melpa.org/#/go-impl
+[melpa-badge]: https://melpa.org/packages/go-impl-badge.svg
+[melpa-stable-badge]: https://stable.melpa.org/packages/go-impl-badge.svg
