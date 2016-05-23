@@ -17,6 +17,16 @@
 % go get -u golang.org/x/tools/cmd/godoc
 ```
 
+
+## Installation
+
+`go-impl` is available on [MELPA](https://melpa.org/) and [MELPA stable](https://stable.melpa.org/)
+
+You can install `go-impl` with the following command.
+
+<kbd>M-x package-install [RET] go-impl [RET]</kbd>
+
+
 ## Command
 
 #### `M-x go-impl` `(go-impl receiver interface)`
