@@ -4,4 +4,5 @@
 (package-file "go-impl.el")
 
 (development
- (depends-on "go-mode"))
+ (depends-on "go-mode")
+ (depends-on "helm"))
