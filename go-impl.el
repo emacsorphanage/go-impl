@@ -104,6 +104,8 @@
   (interactive
    (let* ((packages (go-packages))
           (comp-fn (lambda (input predicate code)
+                     (when (bound-and-true-p helm-mode)
+                       (setq input (or (bound-and-true-p helm-input) input)))
                      (go-impl--completing-function packages input predicate code))))
      (list
       (read-string "Receiver: " nil 'go-impl--receiver-history)
