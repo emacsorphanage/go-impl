@@ -4,7 +4,7 @@
 
 ## ScreenCast
 
-![go-impl.el](image/go-impl.gif)
+![Screencast of go-impl.el](image/go-impl.gif)
 
 
 ## Requirements
