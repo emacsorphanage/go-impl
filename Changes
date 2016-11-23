@@ -1,5 +1,8 @@
 Revision history for go-impl.el
 
+Revision 0.13 2016/11/23 syohex
+    - Drop Emacs 24.1 and 24.2 support
+
 Revision 0.12 2016/06/26 syohex
     - Improve for helm-mode
 
