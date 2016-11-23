@@ -4,9 +4,9 @@ go:
   - "1.6"
   - "tip"
 env:
-  - EVM_EMACS=emacs-24.3-travis
   - EVM_EMACS=emacs-24.4-travis
   - EVM_EMACS=emacs-24.5-travis
+  - EVM_EMACS=emacs-25.1-travis
 before_install:
   - go get -u golang.org/x/tools/cmd/godoc
   - export PATH=$HOME/gopath/bin:$PATH
