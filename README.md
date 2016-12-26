@@ -36,6 +36,10 @@ Insert snippet by `impl receiver interface`.
 
 ## Customization
 
+#### `go-impl-command`
+
+Location of `impl` command.
+
 #### `go-impl-aliases-alist`
 
 Association list of aliases of interface names. If interface name is matched
