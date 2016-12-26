@@ -33,6 +33,10 @@
   "`impl' integration for go-mode."
   :group 'go)
 
+(defcustom go-impl-command (executable-find "impl")
+  "Location of impl command."
+  :type 'file)
+
 (defcustom go-impl-aliases-alist nil
   "List of aliases for interface names"
   :type '(alist :key-type (string :tag "Alias")
@@ -95,7 +99,7 @@
 
 (defun go-impl--execute (receiver interface)
   (with-temp-buffer
-    (unless (zerop (process-file "impl" nil t nil receiver interface))
+    (unless (zerop (process-file go-impl-command nil t nil receiver interface))
       (error "Failed: impl '%s' %s" receiver interface))
     (buffer-string)))
 
