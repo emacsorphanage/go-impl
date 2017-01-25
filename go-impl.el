@@ -4,7 +4,7 @@
 
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
 ;; URL: https://github.com/syohex/emacs-go-impl
-;; Version: 0.13
+;; Version: 0.14
 ;; Package-Requires: ((emacs "24.3") (go-mode "1.3.0"))
 
 ;; This program is free software; you can redistribute it and/or modify

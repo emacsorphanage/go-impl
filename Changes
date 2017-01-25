@@ -1,5 +1,9 @@
 Revision history for go-impl.el
 
+Revision 0.14 2017/01/26 syohex
+    - Support custom impl path
+    - Implement receiver completion(#8)
+
 Revision 0.13 2016/11/23 syohex
     - Drop Emacs 24.1 and 24.2 support
 
