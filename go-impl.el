@@ -81,8 +81,8 @@
 
 (defun go-impl--collect-interface (package)
   (with-temp-buffer
-    (unless (zerop (process-file "godoc" nil t nil "-src" package))
-      (error "Failed: 'godoc -src %s'" package))
+    (unless (zerop (process-file "go" nil t nil "doc" "-src" package))
+      (error "Failed: 'go doc -src %s'" package))
     (goto-char (point-min))
     (cl-loop with re = "^type\\s-+\\(\\S-+\\)\\s-+interface"
              with real-package = (go-impl--real-package-name package)
